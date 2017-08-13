@@ -57,6 +57,7 @@ public class HParser extends Configured implements Tool {
 					if(HSpider.getUrlBloomFilter().contains(url)) {
 						continue;
 					}
+					HSpider.getUrlBloomFilter().add(url);
 					Put put = new Put(Bytes.toBytes(url));
 					put.add(Bytes.toBytes("info"), Bytes.toBytes("status"), Bytes.toBytes("0"));
 					context.write(key, put);
